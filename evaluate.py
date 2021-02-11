@@ -60,4 +60,5 @@ if __name__=="__main__":
     eer = 1. - brentq(lambda x: 1. - x - interp1d(tpr, fpr)(x), 0., 1.)
     fnr = 1. - tpr
     print("False Positive Rate: ", interp1d(fnr, fpr)(args.target_fnr))
+    print("Threshold: ", interp1d(fnr, threshold)(args.target_fnr))
     print("Equal Error Rate: ", eer)

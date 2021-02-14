@@ -79,6 +79,8 @@ tar -xvf 20210206-kosukeakimoto-zaci2020-danbooru2020zeroshotfaces.tar
 
 ### Preprocess images
 
+Otherwise, you can create ZACI-20 dataset from the original Danbooru 2020 dataset as follows.
+
 * Download SFW 512 px subset of [Danbooru 2020 dataset](https://www.gwern.net/Danbooru2020).
 * Install dependencies.
   - `pip install tqdm pillow`

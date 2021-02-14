@@ -68,6 +68,15 @@ In progress.
   - Note that `/` in original character labels of Danbooru 2020 is replaced by `__`.
 
 ## Getting Started
+### Download preprocessed dataset
+
+Many thanks to [gwern](https://github.com/gwern), the dataset is now available for download via rsync. Use following commands to download and untar the dataset.
+
+```
+rsync --verbose rsync://78.46.86.149:873/biggan/20210206-kosukeakimoto-zaci2020-danbooru2020zeroshotfaces.tar ./
+tar -xvf 20210206-kosukeakimoto-zaci2020-danbooru2020zeroshotfaces.tar
+```
+
 ### Preprocess images
 
 * Download SFW 512 px subset of [Danbooru 2020 dataset](https://www.gwern.net/Danbooru2020).
@@ -93,6 +102,8 @@ In progress.
 ## Todo
 
 - [ ] Create more difficult test dataset by adversarially sample negative image pairs.
+- [ ] Evaluate and add other existing methods to the list of benchmarks.
+  - [ ] https://github.com/arkel23/animesion
 
 ## Notes
 ### Preprocessing

@@ -44,6 +44,7 @@ Table 1. Performance of benchmark models (random negative pairs).
 * Negative image pairs which are most confusing to a trained model are kept as test set.
   - 0206_resnet152 is used as the trained model.
   - Negative image pairs are sorted by their predicted scores, and pairs with largest scores are selected.
+* Current benchmarks show much lower performance than that of humans on this confusing negative pairs.
 
 ![](misc/adversarial.png)
 <div style="text-align: center;">
@@ -58,7 +59,11 @@ Table 2. Performance of benchmark models (adversarial negative pairs).
 
 | model name | FPR (%) | FNR (%) | EER (%) | note |
 |---|---|---|---|---|
-In progress.
+| Human | 13.6 | 16.9 | N/A | by kosuke1701 |
+| SE-ResNet-152 | 68.9 | 16.9 | 39.7 | w/ RandAug, Contrastive loss. [0206_seresnet152](https://github.com/kosuke1701/AnimeCV/releases/download/0111_best_randaug/0206_seresnet152.zip) by kosuke1701 |
+| ResNet-18 | 94.9 | 16.9  | 43.0 | w/ RandAug, Contrastive loss. [0206_resnet18](https://github.com/kosuke1701/AnimeCV/releases/download/0111_best_randaug/0206_resnet18.zip) by kosuke1701 |
+
+* The performance of 0206_resnet152 is not shown here because it is not possible to fairly compare the performance of the adversarially attacked model with those of other non-attacked models.
 
 ### Participation
 

@@ -46,6 +46,7 @@ if __name__=="__main__":
     model = Model("0206_seresnet152")
 
     df = pd.read_csv(args.test_pairs)
+    df = df[df["invalid"]==0]
     true_labels = df["label"].values
     ROOT_DIR = args.test_dataset_dir
     scores = []

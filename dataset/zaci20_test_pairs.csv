@@ -1,4 +1,4 @@
-pathA,pathB,label,human_prediction,not_face
+pathA,pathB,label,human_prediction,invalid
 shiraishi_yayoi/3149188.jpg,stakataka/2971161.jpg,0,0,0
 gutsman/2977715.jpg,eagle_(azur_lane)/4027951.jpg,0,0,0
 michelle_monohan/2843692.jpg,michelle_monohan/2843691.jpg,1,1,0

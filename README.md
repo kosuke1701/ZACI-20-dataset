@@ -37,6 +37,8 @@ Table 1. Performance of benchmark models (random negative pairs).
 | Human | 1.59 | 13.9 | N/A | by kosuke1701 |
 | ResNet-152 | **2.40** | 13.9 | 8.89 | w/ RandAug, Contrastive loss. [0206_resnet152](https://github.com/kosuke1701/AnimeCV/releases/download/0111_best_randaug/0206_resnet152.zip) by kosuke1701 |
 | SE-ResNet-152 | 2.43 | 13.9 | **8.15** | w/ RandAug, Contrastive loss. [0206_seresnet152](https://github.com/kosuke1701/AnimeCV/releases/download/0111_best_randaug/0206_seresnet152.zip) by kosuke1701 |
+| ResNet-152 | 2.54 | 13.9 | 8.33 | w/ RandAug, Contrastive + Classification (Cross Entropy) loss. [0301_cls_resnet152](https://github.com/kosuke1701/AnimeCV/releases/download/0111_best_randaug/0301_cls_resnet152.zip) by kosuke1701 |
+| ResNet-18 | 2.96 | 13.9 | 8.65 | w/ RandAug, Contrastive + Classification (Cross Entropy) loss. [0217_cls_resnet18](https://github.com/kosuke1701/AnimeCV/releases/download/0111_best_randaug/0217_cls_resnet18.zip) by kosuke1701 |
 | ResNet-18 | 5.08 | 13.9 | 9.59 | w/ RandAug, Contrastive loss. [0206_resnet18](https://github.com/kosuke1701/AnimeCV/releases/download/0111_best_randaug/0206_resnet18.zip) by kosuke1701 |
 
 ### Adversarially sampled negative pairs
@@ -61,6 +63,8 @@ Table 2. Performance of benchmark models (adversarial negative pairs).
 |---|---|---|---|---|
 | Human | 13.6 | 16.9 | N/A | by kosuke1701 |
 | SE-ResNet-152 | 68.9 | 16.9 | 39.7 | w/ RandAug, Contrastive loss. [0206_seresnet152](https://github.com/kosuke1701/AnimeCV/releases/download/0111_best_randaug/0206_seresnet152.zip) by kosuke1701 |
+| ResNet-152 | 70.9 | 16.9 | 32.6 | w/ RandAug, Contrastive + Classification (Cross Entropy) loss. [0301_cls_resnet152](https://github.com/kosuke1701/AnimeCV/releases/download/0111_best_randaug/0301_cls_resnet152.zip) by kosuke1701 |
+| ResNet-18 | 75.7 | 16.9 | 34.7 | w/ RandAug, Contrastive + Classification (Cross Entropy) loss. [0217_cls_resnet18](https://github.com/kosuke1701/AnimeCV/releases/download/0111_best_randaug/0217_cls_resnet18.zip) by kosuke1701 |
 | ResNet-18 | 94.9 | 16.9  | 43.0 | w/ RandAug, Contrastive loss. [0206_resnet18](https://github.com/kosuke1701/AnimeCV/releases/download/0111_best_randaug/0206_resnet18.zip) by kosuke1701 |
 
 * The performance of 0206_resnet152 is not shown here because it is not possible to fairly compare the performance of the adversarially attacked model with those of other non-attacked models.
@@ -108,7 +112,7 @@ Otherwise, you can create ZACI-20 dataset from the original Danbooru 2020 datase
 
 ## Todo
 
-- [ ] Create more difficult test dataset by adversarially sample negative image pairs.
+- [x] Create more difficult test dataset by adversarially sample negative image pairs.
 - [ ] Evaluate and add other existing methods to the list of benchmarks.
   - [ ] https://github.com/arkel23/animesion
 
@@ -130,12 +134,16 @@ Otherwise, you can create ZACI-20 dataset from the original Danbooru 2020 datase
 * Since evaluating and annotating all negative pairs in the test set is time-consuming task, a subset of negative pairs are included in the test set.
 
 ### Benchmarks
-* Benchmark models (0206_resnet, 0206_seresnet, 0206_resnet18) are trained with [this code](https://github.com/kosuke1701/optuna-metric-learning).
-  - `python -u -m optuna_metric_learning.train --conf <CONFIG_FN> --model-def-fn examples/image_folder_example.py  --max-epoch 60 --patience 3 --n-fold 100`
-  - Corresponding `<CONFIG_FN>`:
-    - `tuned_configs/resnet18.json` (for 0206_resnet18)
-    - `tuned_configs/resnet152.json` (for 0206_resnet152)
-    - `tuned_configs/seresnet152.json` (for 0206_seresnet152)
+* Benchmark models (0206_resnet, 0206_seresnet, 0206_resnet18, 0217_cls_resnet18, 0301_cls_resnet152) are trained with [this code](https://github.com/kosuke1701/optuna-metric-learning).
+  - `python -u -m optuna_metric_learning.train --conf <CONFIG_FN> --model-def-fn examples/image_folder_example.py  --max-epoch 60 --patience 3 --n-fold 100 --no-trial`
+    - Corresponding `<CONFIG_FN>`:
+      - `examples/tuned_configs/resnet18.json` (for 0206_resnet18)
+      - `examples/tuned_configs/resnet152.json` (for 0206_resnet152)
+      - `examples/tuned_configs/seresnet152.json` (for 0206_seresnet152)
+  - `python -u -m optuna_metric_learning.train --conf <CONFIG_FN> --model-def-fn examples/image_folder_examples_classifier.py --no-trial --trainer TrainWithClassifier --max-epoch 300 --patience 3 --n-fold 10`
+    - Corresponding `<CONFIG_FN>`:
+      - `examples/tuned_configs/resnet18_cls.json` (for 0217_cls_resnet18)
+      - `examples/tuned_configs/resnet152_cls.json` (for 0301_cls_resnet152)
   - Results of conducted hyperparameter tuning on my private dataset is listed in [this Google spreadsheet](https://docs.google.com/spreadsheets/d/1kf4XnnEpWFugO--S1zD2lOv8jWyPAyYnL66POnNZKEM/edit?usp=sharing).
 
 ### Statistics

@@ -63,6 +63,7 @@ Table 2. Performance of benchmark models (adversarial negative pairs).
 |---|---|---|---|---|
 | Human | 13.6 | 16.9 | N/A | by kosuke1701 |
 | SE-ResNet-152 | 68.9 | 16.9 | 39.7 | w/ RandAug, Contrastive loss. [0206_seresnet152](https://github.com/kosuke1701/AnimeCV/releases/download/0111_best_randaug/0206_seresnet152.zip) by kosuke1701 |
+| Vit L-16 | 70.9 | 16.9 | 39.9 | Based on [arkel23/animesion](https://github.com/arkel23/animesion). Trained and evaluated w/ modified codes [kosuke1701/animesion](https://github.com/kosuke1701/animesion). [Pretrained model](https://github.com/kosuke1701/animesion/releases/tag/pretrained_model) |
 | ResNet-152 | 70.9 | 16.9 | 32.6 | w/ RandAug, Contrastive + Classification (Cross Entropy) loss. [0301_cls_resnet152](https://github.com/kosuke1701/AnimeCV/releases/download/0111_best_randaug/0301_cls_resnet152.zip) by kosuke1701 |
 | ResNet-18 | 75.7 | 16.9 | 34.7 | w/ RandAug, Contrastive + Classification (Cross Entropy) loss. [0217_cls_resnet18](https://github.com/kosuke1701/AnimeCV/releases/download/0111_best_randaug/0217_cls_resnet18.zip) by kosuke1701 |
 | ResNet-18 | 94.9 | 16.9  | 43.0 | w/ RandAug, Contrastive loss. [0206_resnet18](https://github.com/kosuke1701/AnimeCV/releases/download/0111_best_randaug/0206_resnet18.zip) by kosuke1701 |
@@ -113,8 +114,8 @@ Otherwise, you can create ZACI-20 dataset from the original Danbooru 2020 datase
 ## Todo
 
 - [x] Create more difficult test dataset by adversarially sample negative image pairs.
-- [ ] Evaluate and add other existing methods to the list of benchmarks.
-  - [ ] https://github.com/arkel23/animesion
+- [x] Evaluate and add other existing methods to the list of benchmarks.
+  - [x] https://github.com/arkel23/animesion
 
 ## Notes
 ### Preprocessing
